@@ -1,0 +1,36 @@
+<html>
+<body>
+<div id="lol" draggable ondragstart="drag(event)"></div>
+<div id="dest" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+<style>
+#lol{
+width:200px;
+height:200px;
+background-color:green;
+}
+#dest{
+width:400px;
+height:400px;
+border:1px solid black;
+margin-left:600px;
+}
+</style>
+<script>
+function drag(e){
+e.dataTransfer.setData("text",e.target.id);
+}
+
+function allowDrop(e){
+e.preventDefault();
+}
+
+function drop(e){
+e.preventDefault();
+var data=e.dataTransfer.getData("text");
+e.target.appendChild(document.getElementById(data));
+document.getElementById(data).style.backgroundColor='red';
+}
+
+</script>
+</body>
+</html>
